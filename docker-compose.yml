@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  webprotege:
+    # build: .
+    image: huangxinping/webprotege
+    depends_on:
+      - mongodb
+    ports:
+      - "8888:8080"
+    volumes:
+      - webprotege_data:/srv/webprotege
+      - webprotege_logs:/var/log/webprotege
+
+  mongodb:
+    image: mongo:3
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  webprotege_data:
+  webprotege_logs:
+  mongodb_data:
